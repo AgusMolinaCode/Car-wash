@@ -5,17 +5,14 @@ import { useRouter } from "next/router";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { createClient } from "@supabase/supabase-js";
 
-
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey, {
 	auth: {
-	  autoRefreshToken: false,
-	  persistSession: false
-	}
-  })
-  
-  
+		autoRefreshToken: false,
+		persistSession: false,
+	},
+});
 
 const fetchClientes = async () => {
 	const { data, error } = await supabase.from("userdata").select("*");
@@ -69,7 +66,7 @@ export default function Administracion() {
 				<div className="mt-5">
 					<h2 className="text-center font-principal text-xl mb-3">Clientes</h2>
 
-					<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-10 px-1 md:px-5 mx-auto">
+					<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-10 px-4 md:px-5 mx-auto">
 						{clientes?.map((cliente) => (
 							<div
 								className="border-2 border-indigo-300 rounded-lg"
