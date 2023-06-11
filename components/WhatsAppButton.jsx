@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const WhatsAppButton = () => {
-  const whatsappLink = "https://walink.co/9938a1";
+  const whatsappLink = "https://walink.co/4af240";
 
   return (
     <div className="whatsapp-button">
