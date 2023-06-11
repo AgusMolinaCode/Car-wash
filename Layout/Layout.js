@@ -16,13 +16,10 @@ export default function Layout({ children, pagina }) {
 				</header>
 
 				<main>
-          
-          {children}
-				
-        <Footer />
-          
-        </main>
+					{children}
 
+					<Footer />
+				</main>
 			</div>
 		</>
 	);

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useSWR from "swr";
 import ProtectedRoute from "../../components/ProtectedRoute";
 import { useRouter } from "next/router";
-import { FaArrowAltCircleLeft, FaTimes } from "react-icons/fa";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
