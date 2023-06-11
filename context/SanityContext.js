@@ -7,12 +7,10 @@ const client = createClient({
 	projectId: "jmtsuj7a",
 	dataset: "production",
 	useCdn: true,
-  token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
-  apiVersion: '2022-08-30',
-  persistSession: false,
+	token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
+	apiVersion: "2022-08-30",
+	persistSession: false,
 });
-
-
 
 const getHero = async () => {
 	const query = `*[_type == "hero"]`;

@@ -5,9 +5,17 @@ import { useRouter } from "next/router";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { createClient } from "@supabase/supabase-js";
 
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(supabaseUrl, supabaseKey, {
+	auth: {
+	  autoRefreshToken: false,
+	  persistSession: false
+	}
+  })
+  
+  
 
 const fetchClientes = async () => {
 	const { data, error } = await supabase.from("userdata").select("*");

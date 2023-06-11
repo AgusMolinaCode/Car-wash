@@ -21,7 +21,12 @@ const Precios = () => {
 
 	const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 	const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-	const supabase = createClient(supabaseUrl, supabaseKey);
+	const supabase = createClient(supabaseUrl, supabaseKey, {
+		auth: {
+			autoRefreshToken: false,
+			persistSession: false,
+		},
+	});
 
 	const openModal = (title) => {
 		setCurrentService(title);
@@ -69,11 +74,11 @@ const Precios = () => {
 				);
 			}
 		}
-        if (!selectedTime) {
-            errors.time = "Selecciona una hora";
-            setErrors(errors);
-            return;
-          }
+		if (!selectedTime) {
+			errors.time = "Selecciona una hora";
+			setErrors(errors);
+			return;
+		}
 	};
 
 	const resetForm = () => {
@@ -123,10 +128,16 @@ const Precios = () => {
 	return (
 		<div className="grid md:grid-cols-3 max-w-[950px] justify-items-center mx-auto">
 			{preciosData.map((item, index) => (
-				<div key={`${item._id}-${index}`} className="flex mx-auto justify-center px-2 mt-10">
+				<div
+					key={`${item._id}-${index}`}
+					className="flex mx-auto justify-center px-2 mt-10"
+				>
 					<div className="flex gap-2 bg-gray-300 border-[1px] border-sky-500 rounded-lg">
 						<div>
-							<div id="precios" className="bg-indigo-300 border-b-2 rounded-t-lg border-sky-500 w-full h-[60px] flex justify-center mx-auto items-center">
+							<div
+								id="precios"
+								className="bg-indigo-300 border-b-2 rounded-t-lg border-sky-500 w-full h-[60px] flex justify-center mx-auto items-center"
+							>
 								<h1 className="text-center font-principal font-bold text-4xl">
 									{item?.mainTitle}
 								</h1>
